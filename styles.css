@@ -28,7 +28,7 @@ body {
     flex: auto;
 }
 
-#startButton {
+#changeSizeButton {
     margin: 40px;
     padding: 12px 40px;
     font-size: 25px;

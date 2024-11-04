@@ -1,5 +1,5 @@
 const container = document.querySelector('.container')
-const startButton = document.querySelector('#startButton')
+const changeSizeButton = document.querySelector('#changeSizeButton')
 
 const DEFAULT_SIZE = 32
 const MIN_SIZE = 2
@@ -22,6 +22,17 @@ function createColumns(num) {
     }
 }
 
+function createGrid(num) {
+    container.innerHTML = ''
+    createColumns(num)
+    const squares = document.querySelectorAll('.square')
+    squares.forEach(function (square) {
+        square.addEventListener('mouseover', (e) => {
+            e.currentTarget.style.backgroundColor = randomRgbColor()
+        })
+    })
+}
+
 function randomNum(max) {
     return Math.floor(Math.random() * (max + 1));
 }
@@ -33,19 +44,6 @@ function randomRgbColor() {
     return `rgb(${r}, ${g}, ${b})`;
 }
 
-function createGrid(num) {
-    while (container.firstChild) {
-        container.removeChild(container.firstChild);
-    }
-    createColumns(num)
-    const squares = document.querySelectorAll('.square')
-    squares.forEach(function (square) {
-        square.addEventListener('mouseover', (e) => {
-            e.currentTarget.style.backgroundColor = randomRgbColor()
-            e.currentTarget.classList.add('coloured')
-        })
-    })
-}
 
 function getValidNumber() {
     num = prompt('choose a number between 2 - 100')
@@ -59,12 +57,10 @@ function getValidNumber() {
     return num
 }
 
-startButton.addEventListener('click', () => {
+changeSizeButton.addEventListener('click', () => {
     gridNum = getValidNumber()
     if (gridNum === 'cancel') return;
     createGrid(gridNum)
 })
-
-
 
 createGrid(DEFAULT_SIZE)
