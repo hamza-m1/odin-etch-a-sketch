@@ -1,6 +1,7 @@
-const container = document.querySelector(".container")
+const container = document.querySelector('.container')
+const startButton = document.querySelector('#startButton')
 
-let gridNum = 16
+let gridNum;
 
 function createRows(num) {
     const row = document.createElement('div')
@@ -19,12 +20,35 @@ function createColumns(num) {
     }
 }
 
-createColumns(gridNum)
+function createGrid(num) {
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+    createColumns(num)
 
-const squares = document.querySelectorAll('.square')
+    const squares = document.querySelectorAll('.square')
 
-squares.forEach(function (square) {
-    square.addEventListener('mouseover', (e) => {
-        e.currentTarget.setAttribute('style', 'background: blue;')
+    squares.forEach(function (square) {
+        square.addEventListener('mouseover', (e) => {
+            e.currentTarget.setAttribute('style', 'background: blue;')
+        })
     })
+}
+
+function getValidNumber() {
+    num = prompt('choose a number between 1 - 100')
+    if (num === null) {
+        return 'cancel'
+    }
+    num = Number(num)
+    if (isNaN(num) || num < 1 || num > 100) {
+        getValidNumber()
+    }
+    return num
+}
+
+startButton.addEventListener('click', () => {
+    gridNum = getValidNumber()
+    if (gridNum === 'cancel') return;
+    createGrid(gridNum)
 })

@@ -4,30 +4,26 @@
     border: 0px;
 }
 
-
 .container {
-    border: solid black;
-    width: 700px;
-    height: 700px;
     display: flex;
     flex-direction: column;
+    width: 700px;
+    height: 700px;
+    border: solid black;
 }
 
 .row {
     display: flex;
     flex: auto;
-    /* background: lightcoral; */
-    /* border: solid red; */
-    /* border-width: 1px; */
 }
 
 .square {
     flex: auto;
     border: solid black;
     border-width: 1px;
-    /* background: lightblue; */
 }
 
-.hovered {
-    background: blue;
+#startButton {
+    margin: 10px;
+    padding: 7px 25px;
 }
