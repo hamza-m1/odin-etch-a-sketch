@@ -1,27 +1,29 @@
 * {
     box-sizing: border-box;
     margin: 0px;
+    border: 0px;
 }
 
 
 .container {
     border: solid black;
-    width: 960px;
-    height: 960px;
+    width: 700px;
+    height: 700px;
     display: flex;
     flex-direction: column;
 }
 
 .row {
     display: flex;
-    background: lightcoral;
     flex: auto;
-    border: solid red;
+    /* background: lightcoral; */
+    /* border: solid red; */
+    /* border-width: 1px; */
 }
 
 .square {
-    border: solid blue;
-    width: 10px;
-    background: lightblue;
     flex: auto;
+    border: solid black;
+    border-width: 1px;
+    /* background: lightblue; */
 }

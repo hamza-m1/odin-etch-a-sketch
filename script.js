@@ -3,7 +3,7 @@ const container = document.querySelector(".container")
 let gridNum = 16
 
 function createRows(num) {
-    const row = document.createElement('row')
+    const row = document.createElement('div')
     row.classList.add('row')
     for (let i = 0; i < num; i++) {
         const square = document.createElement('div')
@@ -19,8 +19,7 @@ function createColumns(num) {
     }
 }
 
-// createRows(10)
-createColumns(10)
+createColumns(16)
 
 
 
