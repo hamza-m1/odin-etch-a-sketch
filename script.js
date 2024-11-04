@@ -1,7 +1,9 @@
 const container = document.querySelector('.container')
 const startButton = document.querySelector('#startButton')
 
-let gridNum;
+const DEFAULT_SIZE = 32
+const MIN_SIZE = 2
+const MAX_SIZE = 100
 
 function createRows(num) {
     const row = document.createElement('div')
@@ -20,28 +22,38 @@ function createColumns(num) {
     }
 }
 
+function randomNum(max) {
+    return Math.floor(Math.random() * (max + 1));
+}
+
+function randomRgbColor() {
+    let r = randomNum(255);
+    let g = randomNum(255);
+    let b = randomNum(255);
+    return `rgb(${r}, ${g}, ${b})`;
+}
+
 function createGrid(num) {
     while (container.firstChild) {
         container.removeChild(container.firstChild);
     }
     createColumns(num)
-
     const squares = document.querySelectorAll('.square')
-
     squares.forEach(function (square) {
         square.addEventListener('mouseover', (e) => {
-            e.currentTarget.setAttribute('style', 'background: blue;')
+            e.currentTarget.style.backgroundColor = randomRgbColor()
+            e.currentTarget.classList.add('coloured')
         })
     })
 }
 
 function getValidNumber() {
-    num = prompt('choose a number between 1 - 100')
+    num = prompt('choose a number between 2 - 100')
     if (num === null) {
         return 'cancel'
     }
     num = Number(num)
-    if (isNaN(num) || num < 1 || num > 100) {
+    if (isNaN(num) || num < MIN_SIZE || num > MAX_SIZE) {
         getValidNumber()
     }
     return num
@@ -52,3 +64,7 @@ startButton.addEventListener('click', () => {
     if (gridNum === 'cancel') return;
     createGrid(gridNum)
 })
+
+
+
+createGrid(DEFAULT_SIZE)
