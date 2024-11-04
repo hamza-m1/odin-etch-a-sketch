@@ -13,7 +13,14 @@ function createRows(num) {
     container.appendChild(row)
 }
 
-createRows(10)
+function createColumns(num) {
+    for (let i = 0; i < num; i++) {
+        createRows(num)
+    }
+}
+
+// createRows(10)
+createColumns(10)
 
 
 
