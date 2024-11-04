@@ -19,13 +19,12 @@ function createColumns(num) {
     }
 }
 
-createColumns(16)
+createColumns(gridNum)
 
+const squares = document.querySelectorAll('.square')
 
-
-
-// get amount of rows
-// for loop to create divs for amount of rows
-// then you can add divs to each row
-
-// flexbot to make them fill out the space evenly
+squares.forEach(function (square) {
+    square.addEventListener('mouseover', (e) => {
+        e.currentTarget.setAttribute('style', 'background: blue;')
+    })
+})

@@ -27,3 +27,7 @@
     border-width: 1px;
     /* background: lightblue; */
 }
+
+.hovered {
+    background: blue;
+}
