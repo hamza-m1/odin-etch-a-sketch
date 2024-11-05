@@ -1,5 +1,6 @@
 const container = document.querySelector('.container')
 const changeSizeButton = document.querySelector('#changeSizeButton')
+const clearButton = document.querySelector('#clearButton')
 
 const DEFAULT_SIZE = 32
 const MIN_SIZE = 2
@@ -60,6 +61,10 @@ function getValidNumber() {
 changeSizeButton.addEventListener('click', () => {
     gridNum = getValidNumber()
     if (gridNum === 'cancel') return;
+    createGrid(gridNum)
+})
+
+clearButton.addEventListener('click', () => {
     createGrid(gridNum)
 })
 
