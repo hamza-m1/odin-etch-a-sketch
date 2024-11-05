@@ -1,10 +1,14 @@
 const container = document.querySelector('.container')
 const changeSizeButton = document.querySelector('#changeSizeButton')
 const clearButton = document.querySelector('#clearButton')
+const rainbowButton = document.querySelector('#rainbowButton')
 
 const DEFAULT_SIZE = 32
 const MIN_SIZE = 2
 const MAX_SIZE = 100
+
+let gridNum = DEFAULT_SIZE
+let toggleRainbow = false
 
 function createRows(num) {
     const row = document.createElement('div')
@@ -27,11 +31,19 @@ function createGrid(num) {
     container.innerHTML = ''
     createColumns(num)
     const squares = document.querySelectorAll('.square')
-    squares.forEach(function (square) {
-        square.addEventListener('mouseover', (e) => {
-            e.currentTarget.style.backgroundColor = randomRgbColor()
+    if (toggleRainbow) {
+        squares.forEach(function (square) {
+            square.addEventListener('mouseover', (e) => {
+                e.currentTarget.style.backgroundColor = randomRgbColor()
+            })
         })
-    })
+    } else {
+        squares.forEach(function (square) {
+            square.addEventListener('mouseover', (e) => {
+                e.currentTarget.style.backgroundColor = 'black'
+            })
+        })
+    }
 }
 
 function randomNum(max) {
@@ -68,4 +80,14 @@ clearButton.addEventListener('click', () => {
     createGrid(gridNum)
 })
 
-createGrid(DEFAULT_SIZE)
+rainbowButton.addEventListener('click', () => {
+    if (!toggleRainbow) {
+        toggleRainbow = true
+        createGrid(gridNum)
+    } else {
+        toggleRainbow = false
+        createGrid(gridNum)
+    }
+})
+
+createGrid(gridNum)
