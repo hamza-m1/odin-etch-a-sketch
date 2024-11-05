@@ -31,6 +31,10 @@ function createGrid(num) {
     container.innerHTML = ''
     createColumns(num)
     const squares = document.querySelectorAll('.square')
+    addHover(squares)
+}
+
+function addHover(squares) {
     if (toggleRainbow) {
         squares.forEach(function (square) {
             square.addEventListener('mouseover', (e) => {
@@ -72,7 +76,9 @@ function getValidNumber() {
 
 changeSizeButton.addEventListener('click', () => {
     gridNum = getValidNumber()
-    if (gridNum === 'cancel') return;
+    if (gridNum === 'cancel') {
+        gridNum = DEFAULT_SIZE
+    }
     createGrid(gridNum)
 })
 
